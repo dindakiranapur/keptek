@@ -9,7 +9,6 @@ from config import (
     EPHEMERAL_DISK,
     VOLUME_NAME,
     VOLUME_PATH,
-    PORT,
     SCALEDOWN_WINDOW,
 )
 
@@ -31,14 +30,14 @@ image = modal.Image.from_dockerfile(
     cpu=CPU,
     memory=MEMORY,
     ephemeral_disk=EPHEMERAL_DISK,
-    volumes={
-        VOLUME_PATH: volume,
-    },
+    volumes={VOLUME_PATH: volume},
     timeout=86400,
+    min_containers=1,
+    max_containers=1,
     scaledown_window=SCALEDOWN_WINDOW,
 )
 @modal.concurrent(max_inputs=100)
-@modal.asgi_app()
+@modal.asgi_app(requires_proxy_auth=True)
 def web():
     from main import app as fastapi_app
     return fastapi_app
