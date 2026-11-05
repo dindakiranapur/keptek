@@ -26,7 +26,7 @@ General-purpose Docker environment running on Modal.com.
 
 Clone repository:
 
-    git clone https://github.com/YOUR_USERNAME/keptek.git
+    git clone https://github.com/dindakiranapur/keptek.git
 
     cd keptek
 
