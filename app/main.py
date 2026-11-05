@@ -91,3 +91,19 @@ def storage_write():
         "status": "written",
         "file": str(file),
     }
+
+import modal
+
+storage_volume = modal.Volume.from_name(
+    "keptek-storage"
+)
+
+
+@app.post("/storage/commit")
+def storage_commit():
+    storage_volume.commit()
+
+    return {
+        "status": "success",
+        "message": "Storage committed successfully",
+    }
