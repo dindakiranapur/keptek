@@ -1,0 +1,17 @@
+services:
+  quantus-miner:
+    build: .
+    image: keptek-quantus-miner:latest
+    container_name: kryptex-qtc-peakminer
+
+    restart: unless-stopped
+
+    gpus: all
+
+    command:
+      - --coin
+      - quantus
+      - -o
+      - ${POOL}
+      - -u
+      - ${WALLET}.${WORKER}
