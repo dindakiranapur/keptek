@@ -1,0 +1,15 @@
+
+.git
+.github
+.env
+.venv
+venv
+__pycache__
+*.pyc
+*.log
+models
+datasets
+checkpoints
+outputs
+cache
+storage
